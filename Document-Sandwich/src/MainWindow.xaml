@@ -1,0 +1,18 @@
+<Window x:Class="DocumentSandwich.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Document Sandwich" Width="900" Height="980" MinWidth="720" MinHeight="760" WindowStartupLocation="CenterScreen" Icon="sandwich.ico">
+ <Grid Margin="26,20">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <Grid Margin="4,0,4,18"><StackPanel Orientation="Horizontal"><Image Source="sandwich.ico" Width="44" Height="44" Margin="0,0,12,0"/><StackPanel><TextBlock Text="DOCUMENT SANDWICH" Foreground="{StaticResource Accent}" FontSize="28" FontWeight="Bold"/><TextBlock Text="Your files. One neatly stacked PDF." Foreground="{StaticResource Muted}"/></StackPanel></StackPanel><Button x:Name="SettingsButton" Content="⚙  Settings" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Settings_Click"/></Grid>
+  <Border Grid.Row="1" Background="White" BorderBrush="#D5DFEA" BorderThickness="1" CornerRadius="10" Padding="14,10" Margin="0,0,0,14"><TextBlock Text="Add PDF, Word or image files below. Layers combine from top to bottom, in the order shown." TextWrapping="Wrap" Foreground="{StaticResource Muted}"/></Border>
+  <Grid Grid.Row="2"><Grid.RowDefinitions><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+   <ScrollViewer x:Name="LayersScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel x:Name="Boxes"/></ScrollViewer>
+   <Button Grid.Row="1" x:Name="AddLayerButton" Content="+" FontSize="22" Padding="17,0" HorizontalAlignment="Right" Margin="0,0,0,6" ToolTip="Add another layer" AutomationProperties.Name="Add another layer" Click="AddLayer_Click"/>
+  </Grid>
+  <Border Grid.Row="3" Background="White" BorderBrush="#D5DFEA" BorderThickness="1" CornerRadius="10" Padding="18" Margin="0,4,0,10">
+   <StackPanel><TextBlock Text="Name your PDF" FontWeight="SemiBold" Margin="0,0,0,8"/>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBox x:Name="OutputName" VerticalAlignment="Top" AutomationProperties.Name="PDF file name"/><TextBlock Grid.Column="1" Text=".pdf" VerticalAlignment="Top" Foreground="{StaticResource Muted}" Margin="9,10,18,0"/><StackPanel Grid.Column="2"><Button x:Name="CombineButton" Content="Combine" Background="{StaticResource Accent}" Foreground="White" BorderBrush="{StaticResource Accent}" Padding="32,10" FontWeight="SemiBold" Click="Combine_Click"/><Button x:Name="ClearButton" Content="Clear" Background="White" Margin="0,7,0,0" ToolTip="Remove all attached files from every layer" Click="Clear_Click"/></StackPanel></Grid>
+    <TextBlock x:Name="SaveHint" Foreground="{StaticResource Muted}" Margin="0,9,0,0" TextWrapping="Wrap"/>
+   </StackPanel>
+  </Border>
+  <StackPanel Grid.Row="4"><ProgressBar x:Name="Progress" Height="3" IsIndeterminate="True" Visibility="Collapsed" Foreground="{StaticResource Accent}"/><TextBlock x:Name="Status" Text="Ready to stack. Word files require Microsoft Word on this PC." Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="4,8,4,0"/><Button x:Name="OpenButton" Content="Open finished PDF" Visibility="Collapsed" HorizontalAlignment="Left" Margin="0,8,0,0" Click="Open_Click"/></StackPanel>
+ </Grid>
+</Window>
