@@ -1,0 +1,16 @@
+src/bin/
+src/obj/
+tests/**/bin/
+tests/**/obj/
+dist/
+tests/results*/
+GitHub-Package/
+*.user
+*.suo
+.vs/
+.env
+.env.*
+*.log
+*.pfx
+*.p12
+*.key
